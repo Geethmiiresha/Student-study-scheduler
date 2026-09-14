@@ -1,0 +1,182 @@
+
+
+/* Background with subtle gradient */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  background-image: url("images/bg-study.jpg");
+  margin: 0;
+  padding: 40px 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Main container with shadow and rounded corners */
+.container {
+  background-color: #ffffffdd; /* white with slight transparency */
+  padding: 30px 40px;
+  border-radius: 15px;
+  max-width: 650px;
+  width: 100%;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  border: 2px solid #f9a825; /* subtle gold border */
+  backdrop-filter: blur(10px);
+}
+
+/* Titles */
+h1, h2 {
+  text-align: center;
+  color: #4a4a4a;
+  text-shadow: 1px 1px 2px #f9a825aa;
+  margin-bottom: 15px;
+}
+
+/* Form labels */
+form label {
+  display: block;
+  font-weight: 700;
+  margin-top: 20px;
+  color: #333333;
+  letter-spacing: 0.03em;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+  margin-top: 8px;
+  padding: 12px 15px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 2px solid #f9a825;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+  box-sizing: border-box;
+  font-weight: 500;
+  color: #222;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus {
+  border-color: #ffca28;
+  box-shadow: 0 0 8px #f9a825aa;
+}
+
+/* Buttons */
+button {
+  margin-top: 30px;
+  padding: 14px 20px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(45deg, #f9a825, #ffca28);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(249, 168, 37, 0.6);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #ffca28, #f9a825);
+  box-shadow: 0 8px 16px rgba(255, 202, 40, 0.8);
+}
+
+/* Schedule list */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 30px;
+  max-height: 220px;
+  overflow-y: auto;
+  border: 1px solid #f9a825;
+  border-radius: 12px;
+  background-color: #fff8e1;
+  box-shadow: inset 0 0 8px #f9a82533;
+}
+
+li {
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  background: #fffde7;
+  border-left: 6px solid #f9a825;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #555;
+  box-shadow: 0 1px 4px #f9a82522;
+  transition: background 0.3s ease;
+}
+
+li:hover {
+  background: #fff9c4;
+}
+
+/* Canvas / Chart */
+canvas {
+  margin-top: 35px;
+  display: block;
+  max-width: 100%;
+  height: auto !important;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(249, 168, 37, 0.3);
+}
+
+/* Scrollbar styling for the schedule list */
+ul::-webkit-scrollbar {
+  width: 8px;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background-color: #f9a825;
+  border-radius: 20px;
+}
+
+ul::-webkit-scrollbar-track {
+  background: #fff8e1;
+}
+
+/* Responsive tweaks */
+@media (max-width: 700px) {
+  .container {
+    padding: 25px 20px;
+  }
+
+  button {
+    font-size: 16px;
+  }
+}
+/* Subject Select Dropdown Styling */
+select {
+  margin-top: 8px;
+  padding: 12px 15px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 2px solid #f9a825;
+  background-color: #fffef4;
+  color: #333;
+  font-weight: 500;
+  box-sizing: border-box;
+  appearance: none; /* Remove default arrow */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23f9a825' class='bi bi-caret-down-fill' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658c-.566-.672-.106-1.658.753-1.658h9.592c.86 0 1.32.986.753 1.658L8.753 11.14a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:focus {
+  border-color: #ffca28;
+  box-shadow: 0 0 8px #f9a825aa;
+  outline: none;
+}
+
+/* Optional: placeholder style for select */
+select:invalid {
+  color: #aaa;
+}

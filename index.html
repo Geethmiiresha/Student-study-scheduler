@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Study Scheduler</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Student Study Scheduler</h1>
+
+    <!-- ✅ Home Page Button -->
+    <button onclick="window.location.href='home.html'" style="margin-bottom: 20px; background-color: #4CAF50; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">
+      🏠 Go to Home Page
+    </button>
+
+    <form id="studyForm">
+      <!-- Subject Dropdown -->
+      <label for="subject">Subject:</label>
+      <select id="subject" required>
+        <option value="" disabled selected>Select Subject</option>
+        <option value="Fundamentals of Programming">Fundamentals of Programming</option>
+        <option value="Software Development">Software Development</option>
+        <option value="ICT Project (Group)">ICT Project (Group)</option>
+        <option value="Human Value and Professionalism">Human Value and Professionalism</option>
+        <option value="Principles of User Interface Design">Principles of User Interface Design</option>
+        <option value="Data communication and Computer Networks">Data communication and Computer Networks</option>
+        <option value="Technical Writing">Technical Writing</option>
+        <option value="System Analysis and Design">System Analysis and Design</option>
+      </select>
+
+      <!-- Integer-only Hours Input -->
+      <label for="hours">Available Study Hours:</label>
+      <input type="number" id="hours" min="1" step="1" required />
+
+      <label for="deadline">Deadline:</label>
+      <input type="date" id="deadline" required />
+
+      <button type="submit">Add</button>
+    </form>
+
+    <h2>Schedule</h2>
+    <ul id="scheduleList"></ul>
+
+    <button id="viewChartBtn">📊 View Study Hours Chart</button>
+  </div>
+
+  <script>
+    const form = document.getElementById('studyForm');
+    const subjectSelect = document.getElementById('subject');
+    const hoursInput = document.getElementById('hours');
+    const deadlineInput = document.getElementById('deadline');
+    const scheduleList = document.getElementById('scheduleList');
+    const viewChartBtn = document.getElementById('viewChartBtn');
+
+    let studyData = [];
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const subject = subjectSelect.value;
+      const hours = parseInt(hoursInput.value);
+      const deadline = deadlineInput.value;
+
+      if (!subject || isNaN(hours) || hours <= 0) {
+        alert("Please select a subject and enter valid hours.");
+        return;
+      }
+
+      studyData.push({ subject, hours, deadline });
+
+      const li = document.createElement('li');
+      li.textContent = `${subject} - ${hours} hrs (Deadline: ${deadline})`;
+      scheduleList.appendChild(li);
+
+      localStorage.setItem('studyData', JSON.stringify(studyData));
+      form.reset();
+    });
+
+    viewChartBtn.addEventListener('click', () => {
+      window.open('chart.html', '_blank');
+    });
+  </script>
+</body>
+</html>

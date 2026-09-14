@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Study Hours Chart</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Study Hours by Subject</h1>
+
+    <canvas id="studyChart" width="600" height="400"></canvas>
+
+    <button onclick="window.location.href='index.html'">← Back to Scheduler</button>
+  </div>
+
+  <script>
+    // Read studyData from localStorage
+    const storedData = JSON.parse(localStorage.getItem('studyData')) || [];
+
+    // Aggregate hours per subject
+    const hoursMap = {};
+    storedData.forEach(item => {
+      if (hoursMap[item.subject]) {
+        hoursMap[item.subject] += item.hours;
+      } else {
+        hoursMap[item.subject] = item.hours;
+      }
+    });
+
+    const subjects = Object.keys(hoursMap);
+    const hours = Object.values(hoursMap);
+
+    const ctx = document.getElementById('studyChart').getContext('2d');
+    const studyChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: subjects,
+        datasets: [{
+          data: hours,
+          backgroundColor: [
+            '#007bff', '#28a745', '#ffc107', '#dc3545',
+            '#6f42c1', '#20c997', '#fd7e14', '#17a2b8'
+          ],
+          borderColor: '#fff',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom',
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
